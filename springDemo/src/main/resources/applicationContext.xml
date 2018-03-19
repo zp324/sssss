@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- p:message="spring!" -->
+	<bean id="hs" class="com.ts.sd.HelloSpring">
+		<!-- <property name="message">
+			<value>spring!</value>
+		</property> -->
+		<property name="message">
+			<!-- <value>P&amp;G</value> -->
+			<value><![CDATA[P&G]]></value>
+		</property>
+		
+		<property name="list">
+			<list>
+				<value>aaaa</value>
+				<value>bbbb</value>
+				<value>cccc</value>
+			</list>
+		</property>
+		<property name="set">
+			<set>
+				<value>saaaa</value>
+				<value>sbbbb</value>
+				<value>scccc</value>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="mkaaa" value="mvaaa" />
+				<entry key="mkbbb" value="mvbbb" />
+				<entry key="mkccc" value="mvccc" />	
+			</map>
+		</property>
+		<property name="props">
+			<props>
+				<prop key="pkaaa">pvaaa</prop>
+				<prop key="pkbbb">pvbbb</prop>
+				<prop key="pkccc">pvccc</prop>
+			</props>
+		</property>
+		<property name="snull">
+			<null/>
+		</property>
+		<property name="kstr">
+			<value></value>
+		</property>
+		
+	</bean>
+	<!-- <bean id="paper" class="com.ts.sd.print.impl.Paper_a4"></bean>
+	<bean id="ink" class="com.ts.sd.print.impl.Ink_color"></bean> -->
+	<!-- <bean id="paper" class="com.ts.sd.print.impl.Paper_b5"></bean>
+	<bean id="ink" class="com.ts.sd.print.impl.Ink_bw"></bean>
+	<bean id="printer" class="com.ts.sd.print.Printer">
+		<property name="paper">
+			<ref bean="paper"/>
+		</property>
+		<property name="ink" ref="ink"></property>
+	</bean> -->
+	
+	<!-- <bean id="userDao" class="com.ts.sd.aop.impl.UserDaoImpl"></bean> -->
+	<!-- p:ud-ref="userDao" -->
+	<!-- <bean id="userService" class="com.ts.sd.aop.impl.UserServiceImpl">
+		<property name="ud" ref="userDao"></property>
+		<constructor-arg ref="userDao" index="0"></constructor-arg>
+		<property name="ud">
+			<bean class="com.ts.sd.aop.impl.UserDaoImpl"></bean>
+		</property>
+		
+	</bean>
+	<bean id="usl" class="com.ts.sd.aop.UserServiceLogging"></bean> -->
+	
+	<context:component-scan base-package="com.ts.sd.aop,com.ts.sd.print"/>
+	
+	<aop:aspectj-autoproxy/>
+	
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* com.ts.sd.aop..*.*(..))" id="pc"/>
+		
+		<aop:aspect ref="usl">
+			<aop:before method="before" pointcut-ref="pc"/>
+			<aop:after-returning method="afterRuturning" returning="result" pointcut-ref="pc"/>
+			<aop:after-throwing method="afterThrowing" pointcut-ref="pc" throwing="e"/>
+			<aop:after method="after" pointcut-ref="pc"/>
+			<aop:around method="around" pointcut-ref="pc"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+</beans>
